@@ -3,15 +3,14 @@ target_a = 7
 
 
 def two_sum(nums, target):
-    """Return indices of the two numbers such that they add up to target.
-    """
+    """Return indices of the two numbers such that they add up to target."""
     hashmap = {}
     for i, num in enumerate(nums):
         complement = target - num
         if complement in hashmap:
             return [hashmap[complement], i]
         hashmap[num] = i
-    return "Cannot find indices of the two numbers such that they add up to target."  
+    return "Cannot find the two numbers such that they add up to target."
 
 
 if __name__ == "__main__":
