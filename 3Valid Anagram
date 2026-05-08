@@ -1,0 +1,48 @@
+inputString1 = "trfgut"
+inputString2 = "gurftt"
+
+
+def ValidAnagram(string1: str, string2: str) -> bool:
+    """
+    Docstring for ValidAnagram
+
+    :param string1: First Input String
+    :type string1: str
+    :param string2: Second Input String
+    :type string2: str
+    :return: Returns true if both strings have equal and same frequency of characters
+    :rtype: bool
+    """
+    # Length Validation
+    if len(string1) != len(string2):
+        return False
+
+    # Convert all characters to lower caps
+    string1 = string1.lower()
+    string2 = string2.lower()
+
+    # Remove spaces
+    string1 = string1.replace(" ", "")
+    string2 = string2.replace(" ", "")
+
+    # Create a list to hold 26 characters
+    counts = [0] * 26
+
+    # From first input string, increase the value of the list position by 1 everytime same character appears
+    for character in string1:
+        counts[ord(character) - ord("a")] += 1
+
+    # From second input string, decrease the value of the list position by 1 everytime same character appears
+    for character in string2:
+        counts[ord(character) - ord("a")] -= 1
+
+    # if all positions in the list are 0, that means the two input strings are a valid Anagram
+    for count in counts:
+        if count != 0:
+            return False
+    return True
+
+
+if __name__ == "__main__":
+    result = ValidAnagram(inputString1, inputString2)
+    print(result)
